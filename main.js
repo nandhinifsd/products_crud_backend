@@ -6,7 +6,7 @@ const userRouter=require("./router/user.router");
 const productRouter=require("./router/product.router");
 const dbConnection=require("./config/dbConnection");
 
-app.use(cors({
+//app.use(cors({
   origin: [
     "http://localhost:5174",
     "http://localhost:5173",
@@ -20,7 +20,7 @@ app.use(cors({
 
 dbConnection();
 app.use(express.json());
-//app.use(cors());
+app.use(cors());
 app.use("/auth",userRouter);
 app.use("/product",productRouter);
 //app.listen(process.env.PORT,()=>{console.log(`Server running on ${process.env.PORT}`)})
