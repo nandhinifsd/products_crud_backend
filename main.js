@@ -5,13 +5,24 @@ const cors=require("cors");
 const userRouter=require("./router/user.router");
 const productRouter=require("./router/product.router");
 const dbConnection=require("./config/dbConnection");
+const corsOptions = {
+  origin: [
+    "http://localhost:5174",
+    "http://localhost:5173",
+    "https://your-frontend.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+};
 
+// CORS middleware must be before routes
+app.use(cors(corsOptions));
 
 
 
 dbConnection();
 app.use(express.json());
-app.use(cors());
+//app.use(cors());
 app.use("/auth",userRouter);
 app.use("/product",productRouter);
 app.listen(process.env.PORT,()=>{console.log(`Server running on ${process.env.PORT}`)})
