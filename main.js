@@ -9,7 +9,7 @@ const corsOptions = {
   origin: [
     "http://localhost:5174",
     "http://localhost:5173",
-    "https://ecomappdemo1.netlify.app/"
+    "https://ecomappdemo1.netlify.app"
   ],
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
@@ -25,6 +25,7 @@ app.use(express.json());
 //app.use(cors());
 app.use("/auth",userRouter);
 app.use("/product",productRouter);
-app.listen(process.env.PORT,()=>{console.log(`Server running on ${process.env.PORT}`)})
+//app.listen(process.env.PORT,()=>{console.log(`Server running on ${process.env.PORT}`)})
+module.exports=app;
 
 
